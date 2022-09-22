@@ -14,8 +14,13 @@ import java.util.stream.Collectors;
 
 import static br.com.anderson.bravi.teste.testebravi.converters.PessoaConverter.convertToPessoa;
 import static br.com.anderson.bravi.teste.testebravi.converters.PessoaConverter.convertToPessoaVO;
-import static org.springframework.beans.BeanUtils.copyProperties;
 
+/** Classe que representa um service de pessoa e contatos
+ *
+ * @author Anderson Piotto
+ * @version 1.0.0
+ * @since 22/09/2022
+ */
 @Service
 public class PessoaService {
 

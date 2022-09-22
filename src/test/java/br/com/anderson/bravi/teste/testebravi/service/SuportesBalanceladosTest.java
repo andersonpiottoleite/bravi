@@ -8,33 +8,33 @@ import static org.junit.Assert.assertTrue;
 
 public class SuportesBalanceladosTest {
 
-    private SuportesBalanceladosService suportesBalanceladosService;
+    private SuportesBalanceladosUtil suportesBalanceladosUtil;
 
     @Before
     public void antesDeCadaTeste(){
-        suportesBalanceladosService = new SuportesBalanceladosService();
+        suportesBalanceladosUtil = new SuportesBalanceladosUtil();
     }
 
     @Test
     public void colchetesValidosDevemPassarNoTeste() {
-        assertTrue(suportesBalanceladosService.validaColchetes("()"));
-        assertTrue(suportesBalanceladosService.validaColchetes("{}"));
-        assertTrue(suportesBalanceladosService.validaColchetes("[]"));
-        assertTrue(suportesBalanceladosService.validaColchetes("(){}[]"));
-        assertTrue(suportesBalanceladosService.validaColchetes("[{()}](){}"));
+        assertTrue(suportesBalanceladosUtil.validaColchetes("()"));
+        assertTrue(suportesBalanceladosUtil.validaColchetes("{}"));
+        assertTrue(suportesBalanceladosUtil.validaColchetes("[]"));
+        assertTrue(suportesBalanceladosUtil.validaColchetes("(){}[]"));
+        assertTrue(suportesBalanceladosUtil.validaColchetes("[{()}](){}"));
     }
 
     @Test
     public void colchetesInvalidosDevemReprovarNoTeste() {
-        assertFalse(suportesBalanceladosService.validaColchetes("[]{()"));
-        assertFalse(suportesBalanceladosService.validaColchetes("[{)]"));
-        assertFalse(suportesBalanceladosService.validaColchetes("[{}]{"));
-        assertFalse(suportesBalanceladosService.validaColchetes("[{}]}"));
-        assertFalse(suportesBalanceladosService.validaColchetes("[{}"));
-        assertFalse(suportesBalanceladosService.validaColchetes("[{]{"));
-        assertFalse(suportesBalanceladosService.validaColchetes("[["));
-        assertFalse(suportesBalanceladosService.validaColchetes("}{"));
-        assertFalse(suportesBalanceladosService.validaColchetes("]["));
-        assertFalse(suportesBalanceladosService.validaColchetes(")("));
+        assertFalse(suportesBalanceladosUtil.validaColchetes("[]{()"));
+        assertFalse(suportesBalanceladosUtil.validaColchetes("[{)]"));
+        assertFalse(suportesBalanceladosUtil.validaColchetes("[{}]{"));
+        assertFalse(suportesBalanceladosUtil.validaColchetes("[{}]}"));
+        assertFalse(suportesBalanceladosUtil.validaColchetes("[{}"));
+        assertFalse(suportesBalanceladosUtil.validaColchetes("[{]{"));
+        assertFalse(suportesBalanceladosUtil.validaColchetes("[["));
+        assertFalse(suportesBalanceladosUtil.validaColchetes("}{"));
+        assertFalse(suportesBalanceladosUtil.validaColchetes("]["));
+        assertFalse(suportesBalanceladosUtil.validaColchetes(")("));
     }
 }

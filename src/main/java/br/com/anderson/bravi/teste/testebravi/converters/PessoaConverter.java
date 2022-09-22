@@ -7,12 +7,17 @@ import br.com.anderson.bravi.teste.testebravi.model.Pessoa;
 import br.com.anderson.bravi.teste.testebravi.vo.ContatoVO;
 import br.com.anderson.bravi.teste.testebravi.vo.PessoaVO;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.springframework.beans.BeanUtils.copyProperties;
 
+/** Classe que representa um converter de Pessoa e contatos
+ *
+ * @author Anderson Piotto
+ * @version 1.0.0
+ * @since 22/09/2022
+ */
 public class PessoaConverter {
 
     public static PessoaVO convertToPessoaVO(Pessoa pessoa) {

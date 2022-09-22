@@ -14,7 +14,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.util.HashMap;
 import java.util.Map;
 
-/** Classe para configuração de exibição de exceptions por tipo de exception
+/** Classe para configuração de exibição de exceptions mais amigáveis
+ * as exibições estão configuradas por tipo de exception
  *
  * @author Anderson Piotto
  * @version 1.0.0
@@ -28,6 +29,13 @@ public class ExceptionHandlerControllerAdvice extends ResponseEntityExceptionHan
         ErrorMessage message = new ErrorMessage(ex.getMessage());
 
         return new ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(IntegracaoException.class)
+    public ResponseEntity<ErrorMessage> resourceIntegracaoException(IntegracaoException ex, WebRequest request) {
+        ErrorMessage message = new ErrorMessage(ex.getMessage());
+
+        return new ResponseEntity<ErrorMessage>(message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(Exception.class)
@@ -48,7 +56,6 @@ public class ExceptionHandlerControllerAdvice extends ResponseEntityExceptionHan
             String message = error.getDefaultMessage();
             errors.put(fieldName, message);
         });
-        return new ResponseEntity<Object>(errors, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<Object>(errors, HttpStatus.NO_CONTENT);
     }
-
 }

@@ -7,6 +7,12 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/** Classe que representa um contato
+ *
+ * @author Anderson Piotto
+ * @version 1.0.0
+ * @since 22/09/2022
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
