@@ -1,7 +1,9 @@
 package br.com.anderson.bravi.teste.testebravi.dto;
 
 import br.com.anderson.bravi.teste.testebravi.model.TipoContato;
-import lombok.Data;;
+import lombok.Data;
+
+;
 
 
 @Data

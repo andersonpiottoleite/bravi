@@ -1,7 +1,6 @@
 package br.com.anderson.bravi.teste.testebravi.controller;
 
 import br.com.anderson.bravi.teste.testebravi.client.ClimaCidadeClient;
-import br.com.anderson.bravi.teste.testebravi.exceptions.IntegracaoException;
 import br.com.anderson.bravi.teste.testebravi.vo.ClimaCidadeVO;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

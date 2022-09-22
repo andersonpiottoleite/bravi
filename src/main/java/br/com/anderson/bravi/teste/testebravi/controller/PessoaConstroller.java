@@ -2,7 +2,6 @@ package br.com.anderson.bravi.teste.testebravi.controller;
 
 import br.com.anderson.bravi.teste.testebravi.dto.PessoaSaveDTO;
 import br.com.anderson.bravi.teste.testebravi.dto.PessoaUpdateDTO;
-import br.com.anderson.bravi.teste.testebravi.exceptions.PessoaNotFoundException;
 import br.com.anderson.bravi.teste.testebravi.service.PessoaService;
 import br.com.anderson.bravi.teste.testebravi.vo.PessoaVO;
 import io.swagger.annotations.ApiOperation;
@@ -92,6 +91,7 @@ public class PessoaConstroller {
     private void addHateoas(PessoaVO pessoaVO) {
         pessoaVO.add(linkTo(methodOn(PessoaConstroller.class).findById(pessoaVO.getId()))
                 .withSelfRel());
-        pessoaVO.add(linkTo(methodOn(PessoaConstroller.class).findAll()).withRel(IanaLinkRelations.COLLECTION));
+        pessoaVO.add(linkTo(methodOn(PessoaConstroller.class).findAll())
+                .withRel(IanaLinkRelations.COLLECTION));
     }
 }
