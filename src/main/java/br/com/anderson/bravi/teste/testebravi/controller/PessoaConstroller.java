@@ -48,7 +48,7 @@ public class PessoaConstroller {
             LOGGER.info("Pessoa e seus contatos foram salvos com sucesso!");
             return ResponseEntity.status(HttpStatus.CREATED).body(pessoaSalva);
         }catch (Exception ex){
-            LOGGER.info("Ocorreu um erro ao salvar a pessoa!");
+            LOGGER.error("Ocorreu um erro ao salvar a pessoa!");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -63,7 +63,7 @@ public class PessoaConstroller {
             LOGGER.info("Pessoa e seus contatos foram alterados com sucesso!");
             return ResponseEntity.status(HttpStatus.OK).body(pessoaAlterada);
         }catch (Exception ex){
-            LOGGER.info("Ocorreu um erro ao alterar a pessoa!");
+            LOGGER.error("Ocorreu um erro ao alterar a pessoa!");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -77,7 +77,7 @@ public class PessoaConstroller {
             LOGGER.info("Deleção realizada com sucesso!");
             return ResponseEntity.status(HttpStatus.OK).build();
         }catch (Exception ex){
-            LOGGER.info("Ocorreu um erro ao deletar a pessoa de ID " + idPessoa);
+            LOGGER.error("Ocorreu um erro ao deletar a pessoa de ID " + idPessoa);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }

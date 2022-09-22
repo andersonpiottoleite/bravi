@@ -3,6 +3,8 @@ package br.com.anderson.bravi.teste.testebravi.controller;
 import br.com.anderson.bravi.teste.testebravi.client.ClimaCidadeClient;
 import br.com.anderson.bravi.teste.testebravi.vo.ClimaCidadeVO;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/clima")
 public class ClimaController {
 
+    private static Logger LOGGER = LoggerFactory.getLogger(ClimaController.class);
+
     public ClimaCidadeClient climaCidadeClient;
 
     @Autowired
@@ -31,7 +35,9 @@ public class ClimaController {
     @ApiOperation("Busca clima por cidade")
     @GetMapping("/{cidade}")
     public ResponseEntity<ClimaCidadeVO> getClimaPorCidade(@PathVariable("cidade") String cidade){
+        LOGGER.info("Inicinado consuta do clima...");
         ClimaCidadeVO climaPorCidade = climaCidadeClient.getClimaPorCidade(cidade);
+        LOGGER.info("Consulta do clima fnalizada!");
         return ResponseEntity.status(HttpStatus.OK).body(climaPorCidade);
     }
 }
