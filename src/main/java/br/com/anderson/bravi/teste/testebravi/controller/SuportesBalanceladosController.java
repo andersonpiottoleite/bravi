@@ -33,7 +33,7 @@ public class SuportesBalanceladosController {
     @ApiOperation("Endpoint para validar ordem de colchetes")
     @GetMapping
     public ResponseEntity<SuportesBalanceladosVO> valida(@RequestParam("colchetes")String colchetes){
-        LOGGER.info("Iniciando validacao dos colchetes...");
+        LOGGER.info("Iniciando validacao dos colchetes... " + colchetes);
         boolean colchetesValidados = suportesBalanceladosUtil.validaColchetes(colchetes);
         LOGGER.info("Validacao dos colchetes finalizada!");
         return ResponseEntity.status(HttpStatus.OK).body(new SuportesBalanceladosVO(colchetesValidados));

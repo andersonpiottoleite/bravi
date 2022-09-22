@@ -42,7 +42,7 @@ public class PessoaConstroller {
     @PostMapping
     public ResponseEntity<PessoaVO> save(@Valid  @RequestBody PessoaSaveDTO pessoaSaveDTO){
         try {
-            LOGGER.info("Salvando a pessoa e seus contatos...");
+            LOGGER.info("Salvando a pessoa e seus contatos... " + pessoaSaveDTO);
             PessoaVO pessoaSalva = pessoaService.save(pessoaSaveDTO);
             addHateoas(pessoaSalva);
             LOGGER.info("Pessoa e seus contatos foram salvos com sucesso!");
@@ -57,7 +57,7 @@ public class PessoaConstroller {
     @PutMapping
     public ResponseEntity<PessoaVO> update(@Valid @RequestBody PessoaUpdateDTO pessoaUpdateDTO){
         try {
-            LOGGER.info("Alterando a pessoa e seus contatos...");
+            LOGGER.info("Alterando a pessoa e seus contatos... " + pessoaUpdateDTO);
             PessoaVO pessoaAlterada = pessoaService.update(pessoaUpdateDTO);
             addHateoas(pessoaAlterada);
             LOGGER.info("Pessoa e seus contatos foram alterados com sucesso!");
