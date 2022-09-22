@@ -1,6 +1,6 @@
 package br.com.anderson.bravi.teste.testebravi.exceptions;
 
-/** Classe que representa exceptions que podem ocorrer em Pessoas e contatos
+/** Classe que representa exceptions que podem ocorrer em Pessoas e contatos, em casos de não localizacao
  *
  * @author Anderson Piotto
  * @version 1.0.0
