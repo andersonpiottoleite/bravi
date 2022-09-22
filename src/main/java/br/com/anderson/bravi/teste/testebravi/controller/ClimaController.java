@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/** Classe que representa um controlador para ver o clima pela cidade
+ *
+ * @author Anderson Piotto
+ * @version 1.0.0
+ * @since 22/09/2022
+ */
 @RestController
 @RequestMapping("/clima")
 public class ClimaController {

@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-/** Classe que representa um controle para validação de colchetes
+/** Classe que representa um controller para validação de colchetes
  *
  * @author Anderson Piotto
  * @version 1.0.0
