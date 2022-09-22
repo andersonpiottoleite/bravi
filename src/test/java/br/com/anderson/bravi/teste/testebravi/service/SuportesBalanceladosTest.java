@@ -2,10 +2,12 @@ package br.com.anderson.bravi.teste.testebravi.service;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+@ActiveProfiles("test")
 public class SuportesBalanceladosTest {
 
     private SuportesBalanceladosUtil suportesBalanceladosUtil;

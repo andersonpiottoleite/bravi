@@ -2,6 +2,7 @@ package br.com.anderson.bravi.teste.testebravi.controller;
 
 import br.com.anderson.bravi.teste.testebravi.dto.PessoaSaveDTO;
 import br.com.anderson.bravi.teste.testebravi.dto.PessoaUpdateDTO;
+import br.com.anderson.bravi.teste.testebravi.exceptions.PessoaNotFoundException;
 import br.com.anderson.bravi.teste.testebravi.service.PessoaService;
 import br.com.anderson.bravi.teste.testebravi.vo.PessoaVO;
 import io.swagger.annotations.ApiOperation;
@@ -28,8 +29,11 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequestMapping("/pessoa")
 public class PessoaConstroller {
 
-    @Autowired
     private PessoaService pessoaService;
+    @Autowired
+    public PessoaConstroller(PessoaService pessoaService) {
+        this.pessoaService = pessoaService;
+    }
 
     @ApiOperation("Endpoint para salvar uma pessoa e seus contatos")
     @PostMapping
@@ -69,16 +73,12 @@ public class PessoaConstroller {
     @ApiOperation("Endpoint para listar varias pessoas e seus contatos")
     @GetMapping("/all")
     public ResponseEntity<List<PessoaVO>> findAll(){
-        try {
-            List<PessoaVO> pessoas = pessoaService.findAll();
-            pessoas = pessoas.stream().map(p -> {
-                addHateoas(p);
-                return p;
-            }).collect(Collectors.toList());
-            return ResponseEntity.status(HttpStatus.OK).body(pessoas);
-        }catch (Exception ex){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+        List<PessoaVO> pessoas = pessoaService.findAll();
+        pessoas = pessoas.stream().map(p -> {
+            addHateoas(p);
+            return p;
+        }).collect(Collectors.toList());
+        return ResponseEntity.status(HttpStatus.OK).body(pessoas);
     }
 
     @ApiOperation("Endpoint para buscar uma pessoa (e seus contatos) por id")

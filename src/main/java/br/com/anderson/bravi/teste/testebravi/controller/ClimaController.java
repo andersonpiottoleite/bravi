@@ -22,8 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/clima")
 public class ClimaController {
 
-    @Autowired
     public ClimaCidadeClient climaCidadeClient;
+
+    @Autowired
+    public ClimaController(ClimaCidadeClient climaCidadeClient){
+        this.climaCidadeClient = climaCidadeClient;
+    }
 
     @ApiOperation("Busca clima por cidade")
     @GetMapping("/{cidade}")

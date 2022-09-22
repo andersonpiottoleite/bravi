@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/suportes-balancelados")
 public class SuportesBalanceladosController {
-
-    @Autowired
     private SuportesBalanceladosUtil suportesBalanceladosUtil;
+    @Autowired
+    public SuportesBalanceladosController(SuportesBalanceladosUtil suportesBalanceladosUtil) {
+        this.suportesBalanceladosUtil = suportesBalanceladosUtil;
+    }
 
     @ApiOperation("Endpoint para validar ordem de colchetes")
     @GetMapping

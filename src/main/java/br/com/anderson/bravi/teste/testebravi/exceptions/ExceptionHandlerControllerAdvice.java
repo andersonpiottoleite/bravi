@@ -24,11 +24,11 @@ import java.util.Map;
 @ControllerAdvice
 public class ExceptionHandlerControllerAdvice extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(PessoaException.class)
-    public ResponseEntity<ErrorMessage> resourceIntegracaoException(PessoaException ex, WebRequest request) {
+    @ExceptionHandler(PessoaNotFoundException.class)
+    public ResponseEntity<ErrorMessage> resourceIntegracaoException(PessoaNotFoundException ex, WebRequest request) {
         ErrorMessage message = new ErrorMessage(ex.getMessage());
 
-        return new ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<ErrorMessage>(message, HttpStatus.NO_CONTENT);
     }
 
     @ExceptionHandler(IntegracaoException.class)
@@ -46,9 +46,7 @@ public class ExceptionHandlerControllerAdvice extends ResponseEntityExceptionHan
     }
 
     @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
-                                                                  HttpHeaders headers, HttpStatus status, WebRequest request) {
-
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach((error) ->{
 
@@ -56,6 +54,6 @@ public class ExceptionHandlerControllerAdvice extends ResponseEntityExceptionHan
             String message = error.getDefaultMessage();
             errors.put(fieldName, message);
         });
-        return new ResponseEntity<Object>(errors, HttpStatus.NO_CONTENT);
+        return new ResponseEntity<Object>(errors, HttpStatus.BAD_REQUEST);
     }
 }

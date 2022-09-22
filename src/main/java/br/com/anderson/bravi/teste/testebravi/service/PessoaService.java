@@ -2,7 +2,7 @@ package br.com.anderson.bravi.teste.testebravi.service;
 
 import br.com.anderson.bravi.teste.testebravi.dto.PessoaSaveDTO;
 import br.com.anderson.bravi.teste.testebravi.dto.PessoaUpdateDTO;
-import br.com.anderson.bravi.teste.testebravi.exceptions.PessoaException;
+import br.com.anderson.bravi.teste.testebravi.exceptions.PessoaNotFoundException;
 import br.com.anderson.bravi.teste.testebravi.model.Pessoa;
 import br.com.anderson.bravi.teste.testebravi.repository.PessoaRepository;
 import br.com.anderson.bravi.teste.testebravi.vo.PessoaVO;
@@ -24,8 +24,11 @@ import static br.com.anderson.bravi.teste.testebravi.converters.PessoaConverter.
 @Service
 public class PessoaService {
 
-    @Autowired
     private PessoaRepository pessoaRepository;
+    @Autowired
+    public PessoaService(PessoaRepository pessoaRepository) {
+        this.pessoaRepository = pessoaRepository;
+    }
 
     public PessoaVO save(PessoaSaveDTO pessoaSaveDTO){
         Pessoa pessoa = convertToPessoa(pessoaSaveDTO);
@@ -45,6 +48,11 @@ public class PessoaService {
 
     public List<PessoaVO> findAll(){
         List<Pessoa> pessoas = pessoaRepository.findAll();
+
+        if (pessoas.isEmpty()){
+            throw new PessoaNotFoundException("Nenhuma pessoa cadastrada") ;
+        }
+
         return pessoas.stream().map(p -> {
             return convertToPessoaVO(p);
         }).collect(Collectors.toList());
@@ -52,7 +60,7 @@ public class PessoaService {
 
     public PessoaVO findById(Long idPessoa){
         Pessoa pessoa = pessoaRepository.findById(idPessoa)
-                .orElseThrow(() -> new PessoaException("Pessoa não encontrada com o id: " + idPessoa));
+                .orElseThrow(() -> new PessoaNotFoundException("Pessoa não encontrada com o id: " + idPessoa));
         return convertToPessoaVO(pessoa);
     }
 }

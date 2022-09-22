@@ -45,7 +45,6 @@ public class PessoaConverter {
         }).collect(Collectors.toList());
 
         pessoa.setContatos(contatos);
-
         return pessoa;
     }
 
@@ -60,7 +59,6 @@ public class PessoaConverter {
         }).collect(Collectors.toList());
 
         pessoa.setContatos(contatos);
-
         return pessoa;
     }
 }

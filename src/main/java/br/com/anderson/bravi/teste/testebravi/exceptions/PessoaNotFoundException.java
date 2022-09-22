@@ -6,9 +6,9 @@ package br.com.anderson.bravi.teste.testebravi.exceptions;
  * @version 1.0.0
  * @since 22/09/2022
  */
-public class PessoaException extends RuntimeException{
+public class PessoaNotFoundException extends RuntimeException{
 
-    public PessoaException(String msg){
+    public PessoaNotFoundException(String msg){
         super(msg);
     }
 }

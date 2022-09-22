@@ -20,7 +20,6 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequestMapping("/")
 public class RootEntryPointController {
 
-
     @GetMapping
     public ResponseEntity<RootEntryPointModel> getRoot() {
         RootEntryPointModel resp = new RootEntryPointModel();
