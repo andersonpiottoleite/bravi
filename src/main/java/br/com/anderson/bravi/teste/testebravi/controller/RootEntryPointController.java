@@ -1,6 +1,8 @@
 package br.com.anderson.bravi.teste.testebravi.controller;
 
 import br.com.anderson.bravi.teste.testebravi.hateoas.RootEntryPointModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +22,14 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequestMapping("/")
 public class RootEntryPointController {
 
+    private static Logger LOGGER = LoggerFactory.getLogger(RootEntryPointController.class);
+
     @GetMapping
     public ResponseEntity<RootEntryPointModel> getRoot() {
+        LOGGER.info("Obtendo endpoint raiz da API...");
         RootEntryPointModel resp = new RootEntryPointModel();
         resp.add(linkTo(methodOn(PessoaConstroller.class).save(null)).withRel("pessoa") );
+        LOGGER.info("Endpoint raiz da API obtido!");
         return ResponseEntity.ok(resp);
     }
 
