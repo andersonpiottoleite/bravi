@@ -38,6 +38,13 @@ public class ExceptionHandlerControllerAdvice extends ResponseEntityExceptionHan
         return new ResponseEntity<ErrorMessage>(message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ErrorMessage> resourceIntegracaoException(IllegalArgumentException ex, WebRequest request) {
+        ErrorMessage message = new ErrorMessage(ex.getMessage());
+
+        return new ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(Exception.class)
     public @ResponseBody ResponseEntity<ErrorMessage> resourceAutenticationException(Exception ex, WebRequest request) {
         ErrorMessage message = new ErrorMessage(ex.getMessage());
